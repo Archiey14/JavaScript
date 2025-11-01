@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+    <style>
+        #box { 
+            height: 500px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Index Page</h1>
+
+    <hr>
+
+    <button type="button" id="btn" class="btn btn-primary">Next Record</button>
+    <button type="button" id="btn1" class="btn btn-success">Show All</button>
+    <button type="button" id="btn2" class="btn btn-danger">Clear</button>
+
+    <hr>
+
+    <div id="box" class="border border-danger mb-5">
+        <table class="table" id="tbl"></table>
+    </div>
+
+    <script>
+        //https://jsonplaceholder.typicode.com/
+
+        // https://jsonplaceholder.typicode.com/todos/1
+
+        const btn = document.querySelector('#btn');
+        const btn1 = document.querySelector('#btn1');
+        const btn2 = document.querySelector('#btn2');
+        const tbl = document.querySelector('#tbl');
+
+        let i = 0;
+
+        const fetchRecord = (index) => {
+            let req = new XMLHttpRequest();
+            
+            req.open('GET', 'https://jsonplaceholder.typicode.com/todos/'+index, false);//false for synchronized records(1-200)
+            
+            req.addEventListener('readystatechange', () => {
+                // handle response....
+                if(req.readyState == 4 && req.status == 200) {
+                    let resp = req.responseText;                    
+                    let obj = JSON.parse(resp);
+
+                    let row = tbl.insertRow(i++);
+
+                    let j = 0;
+                    for(let prop in obj) {
+                        let cell = row.insertCell(j++);
+                        cell.innerText = obj[prop];
+                    }
+                }                
+            });
+
+            req.send();
+        };
+
+        const clear = () => {
+            i = 0;
+            tbl.innerHTML = '';
+        };
+
+
+        btn2.addEventListener('click', clear);
+
+        btn1.addEventListener('click', () => {
+            clear();
+
+            for(x=1;x<=200;x++)
+                fetchRecord(x);   
+        });
+
+        btn.addEventListener('click', () => { 
+            fetchRecord(i+1);            
+        });
+
+
+        // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+    </script>
+</body>
+</html>

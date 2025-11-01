@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Index Page</h1>
+
+    <hr>
+
+    <button type ="button" id = "btn">Ajax Request</button>
+
+    <hr>
+
+    <table border="1" align = "center" width = "30%" id = "tbl"></table>
+
+
+    <script>
+
+        //https://jsonplaceholder.typicode.com/
+
+        // https://jsonplaceholder.typicode.com/todos/1
+
+        const btn = document.querySelector('#btn');
+        const tbl = document.querySelector('#tbl');
+
+        let i = 0;
+
+        btn.addEventListener('click',()=>{
+            //send ajax request
+
+            let req = new XMLHttpRequest();
+
+            req.open('GET','https://jsonplaceholder.typicode.com/todos/1',true);
+
+            req.addEventListener('readystatechange',()=>{
+                //handle response
+
+                 if(req.readyState == 4 && req.status == 200) {
+                    let resp = req.responseText;                    
+                    let obj = JSON.parse(resp);
+
+                    let row = tbl.insertRow(i);
+
+                    let j = 0;
+
+                    for(let prop in obj){
+                        let cell = row.insertCell(j++);
+                        cell.innerText = obj[prop];
+                    }
+                }
+            });
+            req.send();
+
+
+        });
+  
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1>Hello world</h1>
+
+    <hr>
+
+    <button id = "btn">Process</button>
+
+
+    <hr>
+
+    <table border = "1" align = "center" width="5%" id = "tbl">
+
+    </table>
+
+    
+    <script>
+        const arr = [34,8,56,24,9,11,89];
+
+        const btn = document.querySelector('#btn');
+        const sel = document.querySelector('#sel');
+        const tbl = document.querySelector('#tbl');
+
+        btn.addEventListener('click',() => {
+            let i = 0;
+            arr.forEach((next)=>{
+                // let row =document.createElement('tr');
+                let row = tbl.insertRow(i++);
+
+
+                // tbl.append(row);
+
+                // let cell = document.createElement('td');
+                // row.append(cell);
+
+                let cell = row.insertCell(0);
+
+                cell.innerText = next;
+
+
+        });
+
+            });
+
+        
+
+    </script>
+</body>
+</html>

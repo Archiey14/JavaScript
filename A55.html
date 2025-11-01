@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1>Hello world</h1>
+
+    <hr>
+
+    <button id = "btn">Process</button>
+
+    <select>
+        <optgroup label="records">
+        <option>Select</option>
+        </optgroup>
+        <optgroup id = 'sel'>
+
+        </optgroup>
+    
+    </select>
+
+    <hr>
+
+    <table border = "1" align = "center" width="5%" id = "tbl">
+
+    </table>
+
+    
+    <script>
+        const arr = [34,8,56,24,9,11,89];
+
+        const btn = document.querySelector('#btn');
+        const sel = document.querySelector('#sel');
+        const tbl = document.querySelector('#tbl');
+
+        btn.addEventListener('click',() => {
+
+
+            arr.forEach((next)=>{
+                let option =document.createElement('option');
+                let label =document.createElement('option');
+                sel.append(option);
+                option.innerText = next;
+
+
+        });
+
+            });
+
+        
+
+    </script>
+</body>
+</html>

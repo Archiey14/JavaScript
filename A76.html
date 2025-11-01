@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Index Page</h1>
+
+    <hr>
+
+    <button type = "button" id="btn">Ajax Request</button>
+    <script>
+
+        // https://jsonplaceholder.typicode.com/
+        // https://jsonplaceholder.typicode.com/todos/1
+
+        const btn  = document.querySelector('#btn');
+
+        btn.addEventListener('click',()=>{
+
+            //send ajax request
+            let req = new XMLHttpRequest();
+
+            req.open('GET','https://jsonplaceholder.typicode.com/todos/1',true);
+
+            req.addEventListener('readystatechange',()=>{
+                //handle response
+                if(req.readyState==4&&req.status==200){
+                    let resp = req.responseText;
+                    
+                    console.log(resp,typeof resp);
+
+                    let obj = JSON.parse(resp);
+
+                    console.log(obj);
+                }
+
+
+            });
+
+            req.send();
+        });
+    </script>
+</body>
+</html>

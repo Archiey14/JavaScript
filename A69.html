@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Index Page</h1>
+
+    <hr>
+
+    <table border = "1" width = "50%" align = "center">
+
+    
+
+        </table>
+    <script>
+        const records = [
+            {name:'Jaggu',age:9,college:'dholakpur1',branch:'CS'},
+            {name:'Kaliya',age:7,college:'dholakpur2',branch:'IT'},
+            {name:'ChotaBheem',age:9,college:'dholakpur1',branch:'AI'},
+        ];
+
+        for(let student of records){
+            for(let prop in student){
+                console.log(prop,student[prop]);
+            }
+            console.log('--------------');
+        }
+    </script>
+</body>
+</html>
