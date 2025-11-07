@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+
+    <hr>
+
+    <button id = "btn1" type = "button">Show Data</button>
+    <button id = "btn2" type = "button">Show Data</button>
+
+    <script>
+        const btn1 = document.querySelector("#btn1");
+        const btn2 = document.querySelector("#btn2");
+
+        const sendAjaxRequest = async(url)=>{
+            const response = await fetch(url);
+            const result = await response.json();
+            return result;
+
+        };
+        
+
+        btn1.addEventListener('click',()=>{
+            
+        sendAjaxRequest('https://jsonplaceholder.typicode.com/todos/1').then((data)=>{console.log(data,'~~~~~',typeof data);
+
+            }).catch((error)=>{
+                console.log(error,'#####');
+            });
+
+        });
+
+        btn2.addEventListener('click',()=>{
+            
+        sendAjaxRequest('https://picsum.photos/v2/list').then((data)=>{console.log(data,'~~~~~',typeof data);
+
+            }).catch((error)=>{
+                console.log(error,'#####');
+            });
+
+        });
+
+    </script>
+</body>
+</html>
