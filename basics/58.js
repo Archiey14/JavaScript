@@ -10,15 +10,15 @@ const userMethods = {
 }
 
 function createUser(firstName,lastName,email,age,address){
-    const user = { }//firstly we create an empty object
+    const user = Object.create(userMethods) //firstly we create an empty object
 
     user.firstName = firstName;
     user.lastName = lastName;
     user.email = email;
     user.age = age;
     user.address = address;
-    user.about = userMethods.about;
-    user.is18 = userMethods.is18;
+    // user.about = userMethods.about;
+    // user.is18 = userMethods.is18;
     
 
     return user;
