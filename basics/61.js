@@ -6,3 +6,5 @@ function createUser(firstName,age){
 }
 
 const user1 = new createUser("archie",20);
+
+    console.log(user1);
